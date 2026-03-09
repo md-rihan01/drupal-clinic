@@ -53,7 +53,7 @@ C:\xampp\htdocs\
 5. Open the project in your browser:
 
 ```
-http://localhost/sharajman-drupal
+http://localhost/drupal-clinic
 ```
 
 6. Follow the Drupal installation wizard and connect your database.
