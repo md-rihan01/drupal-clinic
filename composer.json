@@ -28,6 +28,7 @@
         "drupal/pathauto": "^1.14",
         "drupal/recaptcha": "^3.4",
         "drupal/smtp": "^1.4",
+        "drupal/statistics": "^1.0",
         "drupal/twig_tweak": "^3.4",
         "drupal/webform": "^6.3@beta",
         "drupal/webprofiler": "^11.1",
