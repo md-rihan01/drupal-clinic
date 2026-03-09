@@ -1,0 +1,37 @@
+
+  {# Brand Description #}
+  {% if content['#block_content'].field_brand_description.value %}
+    
+      {{ content['#block_content'].field_brand_description.value|raw }}
+    
+  {% endif %}
+
+  <div class="contact-info mt-5">
+
+    {# Address #}
+    {% if content['#block_content'].field_address.value %}
+      <div class="contact-item">
+        <i class="bi bi-geo-alt"></i>
+        <span>{{ content['#block_content'].field_address.value }}</span>
+      </div>
+    {% endif %}
+
+    {# Phone #}
+    {% if content['#block_content'].field_phone.value %}
+      <div class="contact-item">
+        <i class="bi bi-telephone"></i>
+        <span>{{ content['#block_content'].field_phone.value }}</span>
+      </div>
+    {% endif %}
+
+    {# Email #}
+    {% if content['#block_content'].field_email.value %}
+      <div class="contact-item">
+        <i class="bi bi-envelope"></i>
+        <span>{{ content['#block_content'].field_email.value }}</span>
+      </div>
+    {% endif %}
+
+  </div>
+
+

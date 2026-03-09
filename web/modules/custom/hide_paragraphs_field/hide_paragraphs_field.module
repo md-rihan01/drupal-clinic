@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Module to fix node edit form memory issue by hiding Paragraphs field.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function hide_paragraphs_field_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Look for node page edit forms
+  if (strpos($form_id, 'node_page') === 0 && strpos($form_id, 'form') !== FALSE) {
+    if (isset($form['field_page_sections'])) {
+      // Completely remove the field from the form
+      unset($form['field_page_sections']);
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_info_alter().
+ */
+function hide_paragraphs_field_field_widget_info_alter(&$info) {
+  // Don't alter - just prevent rendering through form_alter
+}
+
+/**
+ * Implements hook_field_widget_settings_form_alter().
+ */
+function hide_paragraphs_field_field_widget_settings_form_alter(&$widget_settings_form, $form_state) {
+  // Prevent widget settings from being rendered
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for form.
+ */ 
+function hide_paragraphs_field_preprocess_form(&$variables) {
+  // Additional fallback - hide field in form preprocessing if it somehow got through
+  if (isset($variables['element']['field_page_sections'])) {
+    $variables['element']['field_page_sections']['#access'] = FALSE;
+  }
+}

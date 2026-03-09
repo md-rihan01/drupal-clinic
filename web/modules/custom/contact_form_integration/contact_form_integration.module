@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Contact Form Integration module.
+ */
+
+use Drupal\Core\Form\FormState;
+
+/**
+ * Implements hook_theme().
+ */
+function contact_form_integration_theme() {
+  return [
+    'contact_form_embed' => [
+      'variables' => [
+        'contact_form_id' => 'feedback_form',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Prepares the contact form for rendering.
+ */
+function template_preprocess_contact_form_embed(&$variables) {
+  $contact_form_id = $variables['contact_form_id'];
+  
+  // Load the contact form entity
+  $contact_form = \Drupal::entityTypeManager()
+    ->getStorage('contact_form')
+    ->load($contact_form_id);
+  
+  if (!$contact_form) {
+    return;
+  }
+  
+  // Build the contact message form
+  $form_builder = \Drupal::formBuilder();
+  $form = $form_builder->getForm(
+    'Drupal\contact\MessageForm',
+    \Drupal::entityTypeManager()
+      ->getStorage('contact_message')
+      ->create(['contact_form' => $contact_form_id])
+  );
+  
+  $variables['form'] = $form;
+}

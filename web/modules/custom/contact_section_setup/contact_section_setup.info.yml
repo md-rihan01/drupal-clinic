@@ -1,0 +1,9 @@
+name: Contact Section Field Setup
+description: Creates field_contact_section for page nodes
+type: module
+version: 1.0.0
+core_version_requirement: '>=10'
+dependencies:
+  - node
+  - paragraphs
+  - entity_reference_revisions

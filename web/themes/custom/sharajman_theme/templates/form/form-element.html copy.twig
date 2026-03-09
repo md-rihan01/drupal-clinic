@@ -1,0 +1,53 @@
+{#
+/**
+ * Bootstrap 5 optimized form element
+ */
+#}
+
+{%
+  set classes = [
+    'mb-3',
+    'js-form-item',
+    'form-item',
+    'form-type-' ~ type|clean_class,
+    'form-item-' ~ name|clean_class,
+    errors ? 'has-error'
+  ]
+%}
+
+{% set field_name = name|clean_class %}
+
+{# Bootstrap column logic #}
+{% if field_name in ['name', 'email'] %}
+  {% set col_class = 'col-md-12' %}
+{% else %}
+  {% set col_class = 'col-12' %}
+{% endif %}
+
+<div class="{{ col_class }}">
+  <div{{ attributes.addClass(classes) }}>
+
+    {# Label #}
+    {% if label_display != 'after' %}
+      {{ label }}
+    {% endif %}
+
+    {# Main input #}
+    {{ children }}
+
+    {# Error message (Bootstrap style) #}
+    {% if errors %}
+      <div class="invalid-feedback d-block">
+        {{ errors }}
+      </div>
+    {% endif %}
+
+    {# Description #}
+    {% if description.content %}
+      <div class="form-text">
+        {{ description.content }}
+      </div>
+    {% endif %}
+
+  </div>
+</div>

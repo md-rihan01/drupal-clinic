@@ -1,0 +1,68 @@
+<!-- Home About Section -->
+<section id="home-about" class="home-about section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+        <div class="about-content">
+          <h2 class="section-heading">{{ paragraph.field_about_title.value }}</h2>
+          <p class="lead-text">{{ paragraph.field_description_first_para.value }}</p>
+
+          <p>{{ paragraph.field_description_second_para.value }}</p>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ paragraph.field_patients_served.value }}"
+                data-purecounter-duration="1"></div>
+              <div class="stat-label">Patients Served</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ paragraph.field_years_of_excellence.value }}"
+                data-purecounter-duration="1"></div>
+              <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ paragraph.field_medical_specialists.value }}"
+                data-purecounter-duration="1"></div>
+              <div class="stat-label">Medical Specialists</div>
+            </div>
+          </div>
+
+          {% if content.field_learn_more_button_link %}
+           
+            {{ content.field_learn_more_button_link }}
+            
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+        <div class="about-visual">
+          <div class="main-image">
+            <img src="{{ file_url(paragraph.field_about_image.entity.uri.value) }}" alt="Modern medical facility" class="img-fluid">
+          </div>
+          <div class="floating-card">
+            <div class="card-content">
+              <div class="icon">
+                <i class="bi bi-heart-pulse"></i>
+              </div>
+              <div class="card-text">
+                <h4>24/7 Emergency Care</h4>
+                <p>Always here when you need us most</p>
+              </div>
+            </div>
+          </div>
+          <div class="experience-badge">
+            <div class="badge-content">
+              <span class="years">{{ paragraph.field_years_of_trusted_care.value }}+</span>
+              <span class="text">Years of Trusted Care</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Home About Section -->

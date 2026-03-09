@@ -1,0 +1,38 @@
+uuid: 5a7c3e9d-6f2b-4a8c-9e1d-2c5f7a3b1e6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.field_contact_section
+    - node.type.page
+  module:
+    - entity_reference_revisions
+    - paragraphs
+  theme:
+    - claro
+_core:
+  default_config_hash: w5cG8hQyTzJ4uM5hX8pQ9r2K1j6nL3ZvQ7bY4aC5dFm
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_contact_section:
+    label: hidden
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    region: content
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+hidden:
+  field_page_sections: true
+  links: true

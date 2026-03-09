@@ -1,0 +1,81 @@
+<?php
+
+function sharajman_theme_preprocess_page(&$variables) {
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  $variables['logo'] = theme_get_setting('logo.url');
+}
+
+use Drupal\node\Entity\Node;
+
+function sharajman_theme_preprocess_paragraph(&$variables) {
+
+  $paragraph = $variables['paragraph'];
+
+  // ===== Home Departments Section =====
+  if ($paragraph->bundle() == 'home_departments_section') {
+
+    $query = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->getQuery()
+      ->condition('type', 'departments')
+      ->condition('status', 1)
+      ->sort('created', 'ACS')
+      ->range(0, 5)
+      ->accessCheck(FALSE);
+
+    $nids = $query->execute();
+
+    $variables['departments'] = Node::loadMultiple($nids);
+  }
+
+  // ===== Home Featured Services Section =====
+  if ($paragraph->bundle() == 'home_featured_services_section') {
+
+    $query = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->getQuery()
+      ->condition('type', 'services')
+      ->condition('status', 1)
+      ->sort('created', 'ACS')
+      ->accessCheck(FALSE);
+
+    $nids = $query->execute();
+
+    $variables['services'] = Node::loadMultiple($nids);
+  }
+
+  // ===== Contact Section with Dynamic Contact Form =====
+  if ($paragraph->bundle() == 'contact_section') {
+    try {
+      // Load the feedback contact form entity
+      $contact_form = \Drupal::entityTypeManager()
+        ->getStorage('contact_form')
+        ->load('feedback_form');
+
+      if ($contact_form) {
+        // Pass the contact form entity to the template
+        $variables['contact_form_entity'] = $contact_form;
+      }
+    } catch (\Exception $e) {
+      \Drupal::logger('sharajman_theme')->warning('Contact form error: ' . $e->getMessage());
+    }
+  }
+
+}
+
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function sharajman_theme_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  // Username / Email placeholder
+  $form['name']['#attributes']['placeholder'] = t('Enter your email address');
+
+  // Password placeholder
+  $form['pass']['#attributes']['placeholder'] = t('Enter your password');
+
+}

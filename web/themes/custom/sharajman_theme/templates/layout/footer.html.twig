@@ -1,0 +1,84 @@
+<!-- FOOTER SECTION -->
+
+  </main>
+
+
+  <footer id="footer" class="footer-16 footer position-relative">
+
+    <div class="container">
+
+      <div class="footer-main" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-start">
+
+          <div class="col-lg-5">
+            <div class="brand-section">
+              <a href="{{ path('<front>') }}" class="logo d-flex align-items-center mb-4">
+                {% if logo %}
+                    <img src="{{ logo }}" alt="{{ site_name }}" class="img-fluid">
+                {% else %}
+                    <h1 class="sitename">{{ site_name }}</h1>
+                {% endif %}
+              </a>
+              {{ page.footer_first }}
+              
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="footer-nav-wrapper">
+              <div class="row">
+
+                <div class="col-6 col-lg-3">
+                  {{ page.footer_second }}
+                </div>
+
+                <div class="col-6 col-lg-3">
+                  {{ page.footer_third }}
+                </div>
+
+                <div class="col-6 col-lg-3">
+                  {{ page.footer_fourth }}
+                </div>
+
+                <div class="col-6 col-lg-3">
+                  {{ page.footer_fifth }}
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="bottom-content" data-aos="fade-up" data-aos-delay="300">
+          <div class="row align-items-center">
+
+            <div class="col-lg-6">
+              <div class="copyright">
+                <p>© {{ "now"|date("Y") }} <span class="sitename">{{ site_name }}</span>. All rights reserved.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              {{ page.footer_bottom }}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#!" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+<!-- Footer END -->

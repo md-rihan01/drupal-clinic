@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "drupal-development": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "fdc6fcef4ce38be115adefb41e3d7472db6519e2b788027e3f85eeaa0aa12204"
+    }
+  }
+}

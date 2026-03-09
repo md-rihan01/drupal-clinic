@@ -1,0 +1,5 @@
+name: Hide Paragraphs Field
+type: module
+description: Temporarily hide field_page_sections from node edit form to fix memory issues
+package: Utility
+core_version_requirement: ^10 || ^11

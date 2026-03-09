@@ -1,0 +1,13 @@
+{% if rows %}
+  <div class="row">
+    {% for row in rows %}
+      <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+        <div class="specialty-card">
+          <div class="specialty-content">
+            {{ row.content }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

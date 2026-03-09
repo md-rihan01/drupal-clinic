@@ -1,0 +1,7 @@
+{% if items %}
+  {% for item in items %}
+    <a href="{{ item.content['#url'] }}">
+      {{ item.content['#title'] }}
+    </a>
+  {% endfor %}
+{% endif %}

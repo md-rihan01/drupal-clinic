@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Contact Section Field Setup module.
+ */
+
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+
+/**
+ * Implements hook_install().
+ */
+function contact_section_setup_install() {
+  // Create field storage if it doesn't exist
+  if (!FieldStorageConfig::loadByName('node', 'field_contact_section')) {
+    FieldStorageConfig::create([
+      'field_name' => 'field_contact_section',
+      'entity_type' => 'node',
+      'type' => 'entity_reference_revisions',
+      'cardinality' => 1,
+      'settings' => [
+        'target_type' => 'paragraph',
+      ],
+    ])->save();
+  }
+
+  // Create field instance for page nodes if it doesn't exist
+  if (!FieldConfig::loadByName('node', 'page', 'field_contact_section')) {
+    FieldConfig::create([
+      'field_name' => 'field_contact_section',
+      'entity_type' => 'node',
+      'bundle' => 'page',
+      'label' => 'Contact Section',
+      'description' => 'Add a contact section with form and information',
+      'required' => FALSE,
+      'settings' => [
+        'handler' => 'default:paragraph',
+        'handler_settings' => [
+          'target_bundles' => [
+            'contact_section' => 'contact_section',
+          ],
+          'negate' => FALSE,
+          'target_bundle_self' => FALSE,
+        ],
+      ],
+    ])->save();
+
+    // Add to form display
+    $form_display = \Drupal::entityTypeManager()
+      ->getStorage('entity_form_display')
+      ->load('node.page.default');
+
+    if ($form_display) {
+      $form_display->setComponent('field_contact_section', [
+        'type' => 'paragraphs',
+        'weight' => 2,
+        'settings' => [
+          'title' => 'Paragraph',
+          'title_plural' => 'Paragraphs',
+          'edit_mode' => 'open',
+          'add_mode' => 'dropdown',
+          'form_display_mode' => 'default',
+          'default_paragraph_type' => 'contact_section',
+        ],
+      ])->save();
+    }
+
+    // Add to view display
+    $view_display = \Drupal::entityTypeManager()
+      ->getStorage('entity_view_display')
+      ->load('node.page.default');
+
+    if (!$view_display) {
+      $view_display = \Drupal::entityTypeManager()
+        ->getStorage('entity_view_display')
+        ->create([
+          'targetEntityType' => 'node',
+          'bundle' => 'page',
+          'mode' => 'default',
+          'status' => TRUE,
+        ]);
+    }
+
+    $view_display->setComponent('field_contact_section', [
+      'type' => 'entity_reference_revisions_entity_view',
+      'weight' => 1,
+      'settings' => [
+        'view_mode' => 'default',
+        'link' => '',
+      ],
+    ])->save();
+
+    \Drupal::messenger()->addMessage('Contact Section field created successfully!');
+  }
+}

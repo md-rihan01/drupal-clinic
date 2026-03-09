@@ -1,0 +1,13 @@
+{#
+/**
+ * Theme override for textarea.
+ */
+#}
+
+{% set classes = [
+  'form-control',
+] %}
+
+<textarea{{ attributes.addClass(classes) }}>
+  {{ value }}
+</textarea>

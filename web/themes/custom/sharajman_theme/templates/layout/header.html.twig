@@ -1,0 +1,34 @@
+{{ attach_library('sharajman_theme/global') }}
+  <header id="header" class="header fixed-top">
+    {% if page.top_header %}
+      <div class="topbar d-flex align-items-center dark-background">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+          {{ page.top_header }}
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- End Top Bar -->
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="{{ path('<front>') }}" class="logo d-flex align-items-center">
+            {% if logo %}
+                <img src="{{ logo }}" alt="{{ site_name }}" class="img-fluid">
+            {% else %}
+                <h1 class="sitename">{{ site_name }}</h1>
+            {% endif %}
+        </a>
+
+        {{ page.primary_menu }}
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">

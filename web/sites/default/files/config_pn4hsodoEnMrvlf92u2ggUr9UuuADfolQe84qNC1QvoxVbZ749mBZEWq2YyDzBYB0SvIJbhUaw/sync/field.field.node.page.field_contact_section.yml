@@ -1,0 +1,31 @@
+uuid: 3c7e9b2d-5f4a-4e8c-9a1b-2d5c7f3e1a6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_section
+    - node.type.page
+    - paragraphs.paragraphs_type.contact_section
+  module:
+    - entity_reference_revisions
+    - paragraphs
+_core:
+  default_config_hash: qKH_20W7x-3Z-JMz1_f3t6Ykq-5X9a2N-Ow3VqU7r6M
+id: node.page.field_contact_section
+field_name: field_contact_section
+entity_type: node
+bundle: page
+label: 'Contact Section'
+description: 'Add a contact section with form and information'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      contact_section: contact_section
+    negate: false
+    target_bundle_self: false
+field_type: entity_reference_revisions

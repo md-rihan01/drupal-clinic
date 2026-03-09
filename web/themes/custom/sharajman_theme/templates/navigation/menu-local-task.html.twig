@@ -1,0 +1,15 @@
+{# menu-local-task.html.twig #}
+
+{%
+  set classes = [
+    'nav-item'
+  ]
+%}
+
+<li{{ attributes.addClass(classes) }}>
+  {% if is_active %}
+    {{ link }}
+  {% else %}
+    {{ link }}
+  {% endif %}
+</li>

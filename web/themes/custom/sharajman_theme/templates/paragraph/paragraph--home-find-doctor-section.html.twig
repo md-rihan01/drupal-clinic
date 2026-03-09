@@ -1,0 +1,33 @@
+<!-- Find A Doctor Section -->
+<section id="find-a-doctor" class="find-a-doctor section">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>{{ paragraph.field_doctor_section_title.value }}</h2>
+        <p>{{ paragraph.field_doctor_section_desc.value }}</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-8 text-center">
+                <div class="search-section">
+                <h3 class="search-title">{{ paragraph.field_doctor_section_title_2.value }}</h3>
+                <p class="search-subtitle">{{ paragraph.field_doctor_section_desc_2.value }}</p>
+            </div>
+        </div>
+        
+        {# This prints exposed filters automatically #}
+        {{ drupal_view('doctors_directory', 'block_1') }}   
+
+        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">
+            {% if content.field_view_all_doctors %}
+           
+                {{ content.field_view_all_doctors }}
+                
+            {% endif %}
+          
+        </div>
+
+    </div>
+
+</section>

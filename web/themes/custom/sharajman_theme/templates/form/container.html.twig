@@ -1,0 +1,15 @@
+{#
+/**
+ * Theme override for a container.
+ */
+#}
+
+{% if attributes.id == 'edit-actions' %}
+  <div class="col-12">
+    {{ children }}
+  </div>
+{% else %}
+  <div{{ attributes }}>
+    {{ children }}
+  </div>
+{% endif %}

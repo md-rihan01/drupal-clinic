@@ -1,0 +1,106 @@
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section light-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="hero-content">
+          <div class="row align-items-center">
+
+            <div class="col-lg-6">
+              <div class="content-wrapper" data-aos="fade-up" data-aos-delay="200">
+                <h1>{{ paragraph.field_call_to_action_heading.value }}</h1>
+                <p>{{ paragraph.field_call_to_action_emerg_desc.value }}</p>
+
+                <div class="cta-wrapper">
+                    {% if content.field_call_to_action_button_1 %}
+
+                        {{ content.field_call_to_action_button_1 }}
+                        
+                    {% endif %}
+                    {% if content.field_call_to_action_button_2 %}
+
+                        {{ content.field_call_to_action_button_2 }}
+                        
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="image-container" data-aos="fade-left" data-aos-delay="300">
+                <img src="{{ file_url(paragraph.field_call_to_action_image.entity.uri.value) }}" alt="Medical Excellence" class="img-fluid">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="features-section">
+
+          <div class="row g-0">
+
+            <div class="col-lg-4">
+              <div class="feature-block" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                  <i class="{{ paragraph.field_feature_1_icon_class.value }}"></i>
+                </div>
+                <h3>{{ paragraph.field_feature_1_title.value }}</h3>
+                <p>{{ paragraph.field_feature_1_desc.value }}</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="feature-block" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                  <i class="{{ paragraph.field_feature_2_icon_class.value }}"></i>
+                </div>
+                <h3>{{ paragraph.field_feature_2_title.value }}</h3>
+                <p>{{ paragraph.field_feature_2_desc.value }}</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="feature-block" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon">
+                  <i class="{{ paragraph.field_feature_3_icon_class.value }}"></i>
+                </div>
+                <h3>{{ paragraph.field_feature_3_title.value }}</h3>
+                <p>{{ paragraph.field_feature_3_desc.value }}</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="contact-block">
+          <div class="row">
+
+            <div class="col-lg-8">
+              <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
+                <h2>{{ paragraph.field_call_to_action_emerg_title.value }}</h2>
+                <p>{{ paragraph.field_call_to_action_emerg_desc.value }}</p>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="contact-actions" data-aos="fade-up" data-aos-delay="300">
+                <a href="tel:{{ paragraph.field_call_to_action_phone.value }}" class="emergency-call">
+                  <i class="bi bi-telephone"></i>
+                  <span>{{ paragraph.field_call_to_action_phone.value }}</span>
+                </a>
+                
+                {% if content.field_find_location_button %}
+
+                    {{ content.field_find_location_button }}
+                    
+                {% endif %}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Call To Action Section -->

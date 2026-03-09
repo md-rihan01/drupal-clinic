@@ -1,0 +1,32 @@
+{% import _self as menus %}
+
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+
+  {% if items %}
+    {% if menu_level == 0 %}
+      <div{{ attributes.addClass('social-links', 'd-none', 'd-md-flex', 'align-items-center') }}>
+    {% endif %}
+
+    {% for item in items %}
+
+      {# Get lowercase title for class use #}
+      {% set social = item.title|lower %}
+
+      <a href="{{ item.url.toString() }}" class="{{ social }}">
+        <i class="bi bi-{{ social }}"></i>
+      </a>
+
+      {% if item.below %}
+        {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+      {% endif %}
+
+    {% endfor %}
+
+    {% if menu_level == 0 %}
+      </div>
+    {% endif %}
+  {% endif %}
+{% endmacro %}

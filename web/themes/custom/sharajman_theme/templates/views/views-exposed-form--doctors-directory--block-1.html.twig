@@ -1,0 +1,36 @@
+<div class="col-lg-8 text-center">
+    <div class="search-section">
+        <div class="search-form">
+
+            <form{{ attributes.addClass('search-form') }}>
+
+            <div class="search-input-group">
+
+                <!-- Doctor Name -->
+                <div class="input-wrapper">
+                <i class="bi bi-person"></i>
+                {{ form.title }}
+                </div>
+
+                <!-- Specialty -->
+                <div class="select-wrapper">
+                <i class="bi bi-heart-pulse"></i>
+                {{ form.field_specialty_target_id }}
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="search-btn">
+                <i class="bi bi-search"></i>
+                Find Doctors
+                </button>
+
+            </div>
+
+            {{ form.form_build_id }}
+            {{ form.form_token }}
+            {{ form.form_id }}
+
+            </form>
+        </div>
+    </div>
+</div>

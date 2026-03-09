@@ -1,0 +1,116 @@
+
+
+<!-- Featured Departments Section -->
+<section id="featured-departments" class="featured-departments section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>{{ paragraph.field_section_title.value }}</h2>
+    <p>{{ paragraph.field_section_description.value }}</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-5">
+
+      {% for node in departments %}
+
+        {# First 2 Items → Large Specialty Card #}
+        {% if loop.index <= 2 %}
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="specialty-card">
+              <div class="specialty-content">
+
+                <div class="specialty-meta">
+                  <span class="specialty-label">
+                    {{ node.field_department_label.value }}
+                  </span>
+                </div>
+
+                <h3>{{ node.label }}</h3>
+
+                <p>{{ node.field_departments_description.value }}</p>
+
+                <div class="specialty-features">
+                  {% for item in node.field_department_features %}
+                    <span>
+                      <i class="bi bi-check-circle-fill"></i>
+                      {{ item.value }}
+                    </span>
+                  {% endfor %}
+                </div>
+
+                <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="specialty-link">
+                  Explore {{ node.label }} <i class="bi bi-arrow-right"></i>
+                </a>
+
+              </div>
+
+              <div class="specialty-visual">
+                <img 
+                  src="{{ file_url(node.field_department_image.entity.fileuri) }}"
+                  alt="{{ node.label }}"
+                  class="img-fluid"
+                >
+                <div class="visual-overlay">
+                  <i class="{{ node.field_department_icon_class.value }}"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        {# Next Items → Highlight Card #}
+        {% else %}
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="department-highlight">
+
+              <div class="highlight-icon">
+                <i class="{{ node.field_department_icon_class.value }}"></i>
+              </div>
+
+              <h4>{{ node.label }}</h4>
+
+              <p>{{ node.field_departments_description.value }}</p>
+
+              <ul class="highlight-list">
+                {% for item in node.field_department_features %}
+                  <li>{{ item.value }}</li>
+                {% endfor %}
+              </ul>
+
+              <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="highlight-cta">
+                Learn More
+              </a>
+
+            </div>
+          </div>
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+    <div class="emergency-banner" data-aos="fade-up" data-aos-delay="400">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="emergency-content">
+            <h3>{{ paragraph.field_section_emergency_title.value }}</h3>
+            <p>{{ paragraph.field_emergency_description.value }}</p>
+          </div>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="tel:{{ paragraph.field_emergency_phone_no.value }}" class="emergency-btn">
+            <i class="bi bi-telephone-fill"></i>
+            Call Emergency: {{ paragraph.field_emergency_phone_no.value }}
+          </a>          
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Featured Departments Section -->

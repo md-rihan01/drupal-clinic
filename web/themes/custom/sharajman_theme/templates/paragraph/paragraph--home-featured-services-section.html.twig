@@ -1,0 +1,127 @@
+{#
+/**
+ * Paragraph: Home Featured Services Section
+ */
+#}
+
+<section id="featured-services" class="featured-services section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>{{ paragraph.field_services_section_title.value }}</h2>
+    <p>{{ paragraph.field_services_section_desc.value }}</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-0">
+
+      {# ================= MAIN SERVICE ================= #}
+      {% for service in services %}
+        {% if service.field_service_type.value == 'main' %}
+          <div class="col-lg-8" data-aos="fade-right" data-aos-delay="200">
+            <div class="featured-service-main">
+
+              <div class="service-image-wrapper">
+                {% if service.field_service_image.entity %}
+                  <img src="{{ file_url(service.field_service_image.entity.uri.value) }}"
+                       alt="{{ service.label }}"
+                       class="img-fluid"
+                       loading="lazy">
+                {% endif %}
+
+                <div class="service-overlay">
+                  <div class="service-badge">
+                    <i class="{{ service.field_field_service_icon.value }}"></i>
+                    <span>{{ service.label }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="service-details">
+                <h2>{{ service.label }}</h2>
+                <p>{{ service.field_service_description.value }}</p>
+                <a href="{{ path('entity.node.canonical', {'node': service.id}) }}"
+                   class="main-cta">
+                  Explore Our Services
+                </a>
+              </div>
+
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+
+      {# ================= SIDEBAR SERVICES ================= #}
+      <div class="col-lg-4" data-aos="fade-left" data-aos-delay="300">
+        <div class="services-sidebar">
+
+          {% for service in services %}
+            {% if service.field_service_type.value == 'sidebar' %}
+              <div class="service-item" data-aos="fade-up">
+
+                <div class="service-icon-wrapper">
+                  <i class="{{ service.field_field_service_icon.value }}"></i>
+                </div>
+
+                <div class="service-info">
+                  <h4>{{ service.label }}</h4>
+                  <p>{{ service.field_service_description.value }}</p>
+                  <a href="{{ path('entity.node.canonical', {'node': service.id}) }}"
+                     class="service-link">
+                    Learn More
+                  </a>
+                </div>
+
+              </div>
+            {% endif %}
+          {% endfor %}
+
+        </div>
+      </div>
+
+    </div>
+
+
+    {# ================= SPECIALTY GRID ================= #}
+    <div class="specialties-grid" data-aos="fade-up" data-aos-delay="300">
+      <div class="row align-items-center">
+
+        {% for service in services %}
+          {% if service.field_service_type.value == 'main' %}
+
+            {% for item in service.field_key_points %}
+              {% set paragraph = item.entity %}
+
+              <div class="col-lg-3 col-md-6">
+                <div class="specialty-card">
+
+                  <div class="specialty-image">
+                    {% if paragraph.field_image.entity %}
+                      <img src="{{ file_url(paragraph.field_image.entity.uri.value) }}"
+                          alt="{{ paragraph.field_key_points_title.value }}"
+                          class="img-fluid"
+                          loading="lazy">
+                    {% endif %}
+                  </div>
+
+                  <div class="specialty-content">
+                    <h5>{{ paragraph.field_key_points_title.value }}</h5>
+                    <span>{{ paragraph.field_desc_key_points.value }}</span>
+                  </div>
+
+                </div>
+              </div>
+
+            {% endfor %}
+
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+
+</section>

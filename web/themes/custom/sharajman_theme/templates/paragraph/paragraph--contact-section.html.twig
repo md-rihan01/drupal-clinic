@@ -1,0 +1,73 @@
+<section id="contact" class="contact section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-5">
+
+      <!-- LEFT SIDE -->
+      <div class="col-lg-5">
+        <div class="contact-info-wrapper">
+
+          {% if paragraph.field_address.value %}
+          <div class="contact-info-item mb-4">
+            <div class="info-icon">
+              <i class="bi bi-geo-alt fs-4 text-primary"></i>
+            </div>
+            <div class="info-content">
+              <h5 class="fw-bold">Our Address</h5>
+              <p class="mb-0">{{ paragraph.field_address.value }}</p>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if paragraph.field_email %}
+          <div class="contact-info-item mb-4">
+            <div class="info-icon">
+              <i class="bi bi-envelope fs-4 text-primary"></i>
+            </div>
+            <div class="info-content">
+              <h5 class="fw-bold">Email Address</h5>
+              {% for item in paragraph.field_email %}
+                <p class="mb-0">{{ item.value }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          {% if paragraph.field_hours.value %}
+          <div class="contact-info-item">
+            <div class="info-icon">
+              <i class="bi bi-clock fs-4 text-primary"></i>
+            </div>
+            <div class="info-content">
+              <h5 class="fw-bold">Hours of Operation</h5>
+              {% for item in paragraph.field_hours %}
+                <p class="mb-0">{{ item.value }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+        <div class="col-lg-7">
+            <div class="contact-form-card shadow p-4 rounded bg-white">
+                <h2>{{ paragraph.field_form_heading.value }}</h2>  
+                <p class="mb-4">{{ paragraph.field_form_description.value }}</p>
+                {{ drupal_entity('webform', 'contact') }}
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+  <!-- MAP -->
+  {% if paragraph.field_map_embed_code.value %}
+  <div class="container-fluid map-container" data-aos="fade-up" data-aos-delay="200">
+    <div class="map-overlay"></div>
+    {{ paragraph.field_map_embed_code.value|raw }}
+  </div>
+  {% endif %}
+
+</section>

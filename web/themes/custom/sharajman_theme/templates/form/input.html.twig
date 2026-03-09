@@ -1,0 +1,21 @@
+{#
+/**
+ * Theme override for an input element.
+ */
+#}
+
+{% set classes = [
+  'form-control',
+  'form-control-lg',
+  errors ? 'is-invalid'
+] %}
+
+
+{% if attributes.type == 'submit' %}
+  {% set classes = [
+    'btn',
+    'btn-submit'
+  ] %}
+{% endif %}
+
+<input{{ attributes.addClass(classes) }} />

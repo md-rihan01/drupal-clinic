@@ -1,0 +1,13 @@
+<section id="doctors" class="doctors section">
+  <div class="container">
+    <div class="row gy-4">
+
+      {% for row in rows %}
+        <div class="col-lg-3 col-md-6">
+          {{ row.content }}
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<div class="doctor-card">
+
+  <div class="doctor-image">
+    {{ fields.field_doctor_image.content }}
+  </div>
+
+  <div class="doctor-content">
+    <h4>{{ fields.title.content }}</h4>
+
+    <span class="specialty">
+      {{ fields.field_specialty.content }}
+    </span>
+
+    <p>
+      {{ fields.field_description.content }}
+    </p>
+
+    <div class="experience">
+      {{ fields.field_experience.content }}+ Years Experience
+    </div>
+  
+    {{ fields.field_appointment_button.content|replace({'<a ': '<a class="btn-appointment" '})|raw }}
+  </div>
+</div>

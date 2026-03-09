@@ -1,0 +1,5 @@
+{% if items %}
+  <img src="{{ file_url(items.0.content['#item'].entity.uri.value) }}"
+       alt="{{ items.0.content['#item'].alt }}"
+       class="img-fluid">
+{% endif %}

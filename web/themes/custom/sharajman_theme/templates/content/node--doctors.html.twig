@@ -1,0 +1,118 @@
+<!-- Page Title -->
+<div class="page-title">
+  <div class="heading">
+    <div class="container">
+      <div class="row d-flex justify-content-center text-center">
+        <div class="col-lg-8">
+          
+            <h1 class="heading-title">{{ label }}</h1>
+            {% if content.field_description %}
+                
+                {{ content.field_description }}
+                
+            {% endif %}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="breadcrumbs">
+    <div class="container">
+      <ol>
+        <li>
+          <a href="{{ path('<front>') }}">Home</a>
+        </li>
+
+        <li>
+          <a href="{{ path('<front>') }}doctors">Doctors</a>
+        </li>
+
+        <li class="current">
+          {{ label }}
+        </li>
+      </ol>
+    </div>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="doctor-details py-5">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="col-lg-4">
+
+        <div class="card shadow-sm border-0">
+          
+          {% if content.field_doctor_image %}
+            <div class="doctor-image">
+              {{ content.field_doctor_image }}
+            </div>
+          {% endif %}
+
+          <div class="card-body">
+
+            <h4 class="mb-3">{{ label }}</h4>
+
+            {% if content.field_specialty %}
+              <p class="mb-2">
+                <strong>Specialty:</strong><br>
+                {{ content.field_specialty }}
+              </p>
+            {% endif %}
+
+            {% if content.field_experience %}
+              <p class="mb-2">
+                <strong>Experience:</strong>
+                {{ content.field_experience }} Years
+              </p>
+            {% endif %}
+
+            {% if content.field_rating %}
+              <p class="mb-2">
+                <strong>Rating:</strong>
+                {{ content.field_rating }}
+              </p>
+            {% endif %}
+
+            {% if content.field_review_count %}
+              <p class="mb-2">
+                <strong>Reviews:</strong>
+                {{ content.field_review_count }}
+              </p>
+            {% endif %}
+
+            {% if content.field_availability_status %}
+              <p class="mb-0">
+                <strong>Status:</strong>
+                {{ content.field_availability_status }}
+              </p>
+            {% endif %}
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div class="col-lg-8">
+
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+
+            <h3 class="mb-4">About {{ label }}</h3>
+
+            {% if content.field_description %}
+              <div class="doctor-description">
+                {{ content.field_description }}
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

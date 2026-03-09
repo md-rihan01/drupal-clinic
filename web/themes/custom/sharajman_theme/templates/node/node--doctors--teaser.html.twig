@@ -1,0 +1,62 @@
+<div class="doctor-profile" data-aos="zoom-in">
+
+  <div class="profile-header">
+    <div class="doctor-avatar">
+      {{ content.field_doctor_image }}
+      <div class="status-indicator {{ node.field_availability_status.value }}"></div>
+    </div>
+
+    <div class="doctor-details">
+      <h4>{{ label }}</h4>
+      <span class="specialty-tag">
+        {{ content.field_specialty }}
+      </span>
+
+      <div class="experience-info">
+        <i class="bi bi-award"></i>
+        <span>{{ node.field_experience.value }} years experience</span>
+      </div>
+    </div>
+  </div>
+
+    {# Safe rating #}
+    {% set rating = node.field_rating.value is defined and node.field_rating.value is not empty
+    ? node.field_rating.value + 0
+    : 0 %}
+
+    {% if rating < 0 %}
+    {% set rating = 0 %}
+    {% elseif rating > 5 %}
+    {% set rating = 5 %}
+    {% endif %}
+
+    <div class="rating-section">
+    <div class="stars">
+
+        {% for i in 1..5 %}
+        {% if rating >= i %}
+            <i class="bi bi-star-fill"></i>
+        {% elseif rating >= i - 0.5 %}
+            <i class="bi bi-star-half"></i>
+        {% else %}
+            <i class="bi bi-star"></i>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+
+    <span class="rating-score">
+        {{ rating|number_format(1, '.', '') }}
+    </span>
+
+    <span class="review-count">
+        ({{ node.field_review_count.value|default(0) }} reviews)
+    </span>
+    </div>
+
+  <div class="action-buttons">
+    <a href="{{ url }}" class="btn-secondary">View Details</a>
+    <a href="#" class="btn-primary">Book Now</a>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+name: Sharajman Theme
+type: theme
+description: 'Custom Drupal theme based on stable9'
+core_version_requirement: ^9 || ^10 || ^11
+
+base theme: stable9
+
+libraries:
+  - sharajman_theme/fonts
+  - sharajman_theme/global-styling
+
+regions:
+  top_header: Top Header
+  primary_menu: Primary menu
+  contact_form : Contact Form
+  content: Content
+  footer_first: Footer First
+  footer_second: Footer Second
+  footer_third: Footer Third
+  footer_fourth: Footer Fourth
+  footer_fifth: Footer Fifth
+  footer_bottom: Footer Bottom
