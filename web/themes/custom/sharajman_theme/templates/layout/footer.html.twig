@@ -58,13 +58,16 @@
         <div class="bottom-content" data-aos="fade-up" data-aos-delay="300">
           <div class="row align-items-center">
 
-            <div class="col-lg-6">
+            <div class="col-lg-5">
               <div class="copyright">
                 <p>© {{ "now"|date("Y") }} <span class="sitename">{{ site_name }}</span>. All rights reserved.</p>
               </div>
             </div>
+            <div class="col-lg-2 text center">
+              {{ page.visitor_counter }}
+            </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-5">
               {{ page.footer_bottom }}
             </div>
 

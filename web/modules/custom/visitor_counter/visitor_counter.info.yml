@@ -1,0 +1,5 @@
+name: Visitor Counter
+type: module
+description: Counts site visitors and provides a block to display the total.
+package: Custom
+core_version_requirement: ^10 || ^11
